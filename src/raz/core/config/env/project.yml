@@ -1,0 +1,18 @@
+# raz/config/env/project.yml
+# Project bootstrap environment.
+#
+# This env is used when RAZ starts with a project-only context.
+# Apps loaded here must tolerate missing entity/step/task until the user
+# selects a working context.
+
+project:
+  engines:
+    raz-houdini:
+      apps:
+        - raz-multi-workfiles
+        - raz-multi-publish
+
+    raz-cli:
+      apps:
+        - raz-multi-workfiles
+        - raz-multi-publish

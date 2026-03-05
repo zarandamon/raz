@@ -1,0 +1,32 @@
+# raz/config/env/shot.yml
+shot:
+  engines:
+    raz-houdini:
+      apps:
+        raz-multi-workfiles:
+          settings:
+            area_template: "@template:shot_work_version_area"
+            file_template: "@template:shot_work_version_file"
+            version_padding: 3
+
+        raz-multi-publish:
+          settings:
+            area_template: "@template:shot_publish_version_area"
+            file_template: "@template:shot_publish_version_file"
+            publish_type: "scene"
+            version_padding: 3
+
+    raz-cli:
+      apps:
+        raz-multi-workfiles:
+          settings:
+            area_template: "@template:shot_work_version_area"
+            file_template: "@template:shot_work_version_file"
+            version_padding: 3
+
+        raz-multi-publish:
+          settings:
+            area_template: "@template:shot_publish_version_area"
+            file_template: "@template:shot_publish_version_file"
+            publish_type: "scene"
+            version_padding: 3

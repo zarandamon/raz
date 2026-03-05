@@ -1,0 +1,38 @@
+#### PLACEHOLDER FILE FOR SEQUENCE STEP - DO NOT EDIT ####
+
+# This file is a generic step fallback.
+# Real departments should define sequence_step_<step>.yml
+# Environment selection is handled in pick_environment hook.
+
+# raz/config/env/sequence.yml
+sequence:
+  engines:
+    raz-houdini:
+      apps:
+        raz-multi-workfiles:
+          settings:
+            area_template: "@template:sequence_work_task_area"
+            file_template: "@template:sequence_work_task_file"
+            version_padding: 3
+
+        raz-multi-publish:
+          settings:
+            area_template: "@template:sequence_publish_task_area"
+            file_template: "@template:sequence_publish_task_file"
+            publish_type: "scene"
+            version_padding: 3
+
+    raz-cli:
+      apps:
+        raz-multi-workfiles:
+          settings:
+            area_template: "@template:sequence_work_task_area"
+            file_template: "@template:sequence_work_task_file"
+            version_padding: 3
+
+        raz-multi-publish:
+          settings:
+            area_template: "@template:sequence_publish_task_area"
+            file_template: "@template:sequence_publish_task_file"
+            publish_type: "scene"
+            version_padding: 3

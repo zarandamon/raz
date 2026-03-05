@@ -1,0 +1,273 @@
+# raz/config/templates.yml
+# to call a key we use {}
+# to call a path we use @
+
+templates:
+  keys:
+    Episode:
+      type: str
+
+    Sequence:
+      type: str
+
+    Shot:
+      type: str
+
+    Asset:
+      type: str
+
+    AssetType:
+      type: str
+
+    Step:
+      type: str
+
+    StepShort:
+      type: str
+
+    Task:
+      type: str
+
+    Version:
+      type: int
+      format_spec: "03"
+
+    VariantSet:
+      type: str
+
+    Variant:
+      type: str
+
+    SubLayer:
+      type: str
+
+    UsdExt:
+      type: str
+
+    Ext:
+      type: str
+
+  paths:
+    # ------------------------------------------------------------------
+    # Top level roots (ABSOLUTE)
+    # {root.project} is provided by core (engine/config) and is the
+    # absolute project root directory on disk.
+    # ------------------------------------------------------------------
+    project_root:
+      definition: "{root.project}"
+
+    work_root:
+      definition: "@project_root/work"
+
+    publish_root:
+      definition: "@project_root/publish"
+
+    config_root:
+      definition: "@project_root/config"
+
+    editorial_root:
+      definition: "@project_root/editorial"
+
+    reference_root:
+      definition: "@project_root/reference"
+
+    # ------------------------------------------------------------------
+    # Assets (base areas)
+    # ------------------------------------------------------------------
+    asset_work_area:
+      definition: "@work_root/assets/{AssetType}/{Asset}"
+
+    asset_publish_area:
+      definition: "@publish_root/assets/{AssetType}/{Asset}"
+
+    # Working with no departments (versioned directly under asset)
+    asset_work_version_area:
+      definition: "@asset_work_area/v{Version}"
+
+    asset_publish_version_area:
+      definition: "@asset_publish_area/v{Version}"
+
+    asset_work_version_file:
+      definition: "@asset_work_version_area/{Asset}_v{Version}.{Ext}"
+
+    asset_publish_version_file:
+      definition: "@asset_publish_version_area/{Asset}_v{Version}.{Ext}"
+
+    # ------------------------------------------------------------------
+    # Assets - Step / Task (versioned)
+    # ------------------------------------------------------------------
+    asset_work_step_area:
+      definition: "@asset_work_area/{Step}"
+
+    asset_work_step_version_area:
+      definition: "@asset_work_step_area/v{Version}"
+
+    asset_publish_step_area:
+      definition: "@asset_publish_area/{Step}"
+
+    asset_publish_step_version_area:
+      definition: "@asset_publish_step_area/v{Version}"
+
+    asset_work_task_area:
+      definition: "@asset_work_step_area/{Task}"
+
+    asset_work_task_version_area:
+      definition: "@asset_work_task_area/v{Version}"
+
+    asset_publish_task_area:
+      definition: "@asset_publish_step_area/{Task}"
+
+    asset_publish_task_version_area:
+      definition: "@asset_publish_task_area/v{Version}"
+
+    asset_work_task_file:
+      definition: "@asset_work_task_version_area/{Asset}_{StepShort}_{Task}_v{Version}.{Ext}"
+
+    asset_publish_task_file:
+      definition: "@asset_publish_task_version_area/{Asset}_{StepShort}_{Task}_v{Version}.{Ext}"
+
+    # ------------------------------------------------------------------
+    # Episodic/Feature - Sequences & Shots (base areas)
+    # ------------------------------------------------------------------
+    sequence_work_area:
+      definition: "@work_root/sequences/{Sequence}"
+
+    sequence_publish_area:
+      definition: "@publish_root/sequences/{Sequence}"
+
+    shot_work_area:
+      definition: "@sequence_work_area/{Shot}"
+
+    shot_publish_area:
+      definition: "@sequence_publish_area/{Shot}"
+
+    # ------------------------------------------------------------------
+    # Sequences - Step / Task (versioned) (added)
+    # ------------------------------------------------------------------
+    sequence_work_step_area:
+      definition: "@sequence_work_area/{Step}"
+
+    sequence_work_step_version_area:
+      definition: "@sequence_work_step_area/v{Version}"
+
+    sequence_publish_step_area:
+      definition: "@sequence_publish_area/{Step}"
+
+    sequence_publish_step_version_area:
+      definition: "@sequence_publish_step_area/v{Version}"
+
+    sequence_work_task_area:
+      definition: "@sequence_work_step_area/{Task}"
+
+    sequence_work_task_version_area:
+      definition: "@sequence_work_task_area/v{Version}"
+
+    sequence_publish_task_area:
+      definition: "@sequence_publish_step_area/{Task}"
+
+    sequence_publish_task_version_area:
+      definition: "@sequence_publish_task_area/v{Version}"
+
+    sequence_work_task_file:
+      definition: "@sequence_work_task_version_area/{Sequence}_{StepShort}_{Task}_v{Version}.{Ext}"
+
+    sequence_publish_task_file:
+      definition: "@sequence_publish_task_version_area/{Sequence}_{StepShort}_{Task}_v{Version}.{Ext}"
+
+    # Convenience "versioned directly under sequence" (added)
+    sequence_work_version_area:
+      definition: "@sequence_work_area/v{Version}"
+
+    sequence_publish_version_area:
+      definition: "@sequence_publish_area/v{Version}"
+
+    sequence_work_version_file:
+      definition: "@sequence_work_version_area/{Sequence}_v{Version}.{Ext}"
+
+    sequence_publish_version_file:
+      definition: "@sequence_publish_version_area/{Sequence}_v{Version}.{Ext}"
+
+    # ------------------------------------------------------------------
+    # Shots - Step / Task (versioned)
+    # ------------------------------------------------------------------
+    shot_work_step_area:
+      definition: "@shot_work_area/{Step}"
+
+    shot_work_step_version_area:
+      definition: "@shot_work_step_area/v{Version}"
+
+    shot_publish_step_area:
+      definition: "@shot_publish_area/{Step}"
+
+    shot_publish_step_version_area:
+      definition: "@shot_publish_step_area/v{Version}"
+
+    shot_work_task_area:
+      definition: "@shot_work_step_area/{Task}"
+
+    shot_work_task_version_area:
+      definition: "@shot_work_task_area/v{Version}"
+
+    shot_publish_task_area:
+      definition: "@shot_publish_step_area/{Task}"
+
+    shot_publish_task_version_area:
+      definition: "@shot_publish_task_area/v{Version}"
+
+    shot_work_task_file:
+      definition: "@shot_work_task_version_area/{Sequence}_{Shot}_{StepShort}_{Task}_v{Version}.{Ext}"
+
+    shot_publish_task_file:
+      definition: "@shot_publish_task_version_area/{Sequence}_{Shot}_{StepShort}_{Task}_v{Version}.{Ext}"
+
+    # Convenience "versioned directly under shot" (added)
+    shot_work_version_area:
+      definition: "@shot_work_area/v{Version}"
+
+    shot_publish_version_area:
+      definition: "@shot_publish_area/v{Version}"
+
+    shot_work_version_file:
+      definition: "@shot_work_version_area/{Sequence}_{Shot}_v{Version}.{Ext}"
+
+    shot_publish_version_file:
+      definition: "@shot_publish_version_area/{Sequence}_{Shot}_v{Version}.{Ext}"
+
+    # ------------------------------------------------------------------
+    # USD paths (assets) (kept + anchored under publish_root)
+    # ------------------------------------------------------------------
+    asset_usd_area:
+      definition: "@asset_publish_area/usd"
+
+    asset_usd:
+      definition: "@asset_usd_area/{Asset}.{UsdExt}"
+
+    asset_usd_variantSet_area:
+      definition: "@asset_usd_area/{VariantSet}"
+
+    asset_usd_variantSet_file:
+      definition: "@asset_usd_variantSet_area/{Asset}_{VariantSet}.{UsdExt}"
+
+    asset_usd_variant_area:
+      definition: "@asset_usd_variantSet_area/{Variant}"
+
+    asset_usd_variant_latest_file:
+      definition: "@asset_usd_variant_area/{Asset}_{VariantSet}_{Variant}_latest.{UsdExt}"
+
+    asset_usd_version_area:
+      definition: "@asset_usd_variant_area/v{Version}"
+
+    asset_usd_variant_version_file:
+      definition: "@asset_usd_version_area/{Asset}_{VariantSet}_{Variant}_v{Version}.{UsdExt}"
+
+    asset_usd_sublayer_area:
+      definition: "@asset_usd_variant_area/{SubLayer}"
+
+    asset_usd_sublayer_latest_file:
+      definition: "@asset_usd_sublayer_area/{Asset}_{VariantSet}_{Variant}_{SubLayer}_latest.{UsdExt}"
+
+    asset_usd_sublayer_version_area:
+      definition: "@asset_usd_sublayer_area/v{Version}"
+
+    asset_usd_sublayer_version_file:
+      definition: "@asset_usd_sublayer_version_area/{Asset}_{VariantSet}_{Variant}_{SubLayer}_v{Version}.{UsdExt}"

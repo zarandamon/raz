@@ -1,0 +1,26 @@
+# raz/config/project.yml
+info:
+  name: "raz-project"
+  label: "RAZ Project"
+  description: "Core configuration for RAZ project."
+
+apps:
+  raz-multi-workfiles:
+    source: store
+    version: "0.0.1"
+  raz-multi-publish:
+    source: store
+    version: "0.0.1"
+
+engines:
+  - raz-houdini
+  - raz-maya
+  - raz-cli
+
+frameworks:
+  raz-framework-logging:
+    source: store
+    version: "0.0.1"
+  raz-framework-validation:
+    source: store
+    version: "0.0.1"
